@@ -1,52 +1,53 @@
-const prompt = require("prompt-sync")(); // Require prompt-sync for user input
+const prompt = require("prompt-sync")();
 
-function quadraticSolver(a, b, c) {
-  const lowerBound = -100000000000;
-  const upperBound = 100000000000;
-
-  if (a === 0) {
-    throw new Error("Coefficient a cannot be zero for a quadratic equation");
+function findFibonacci(n) {
+  if (n > 92) {
+    throw new Error("Номер не может быть больше 92");
   }
 
-  if (
-    a < lowerBound ||
-    a > upperBound ||
-    b < lowerBound ||
-    b > upperBound ||
-    c < lowerBound ||
-    c > upperBound
-  ) {
-    throw new Error(
-      `Coefficients must be between ${lowerBound} and ${upperBound}`
-    );
+  if (!Number.isInteger(n)) {
+    throw new Error("Номер должен быть целым числом");
   }
 
-  const discriminant = b * b - 4 * a * c;
-  const sqrtDiscriminant = Math.sqrt(Math.abs(discriminant));
+  if (n === 0) return BigInt(0);
+  if (n === 1 || n === -1) return BigInt(1);
 
-  if (discriminant > 0) {
-    return [
-      parseFloat(((-b + sqrtDiscriminant) / (2 * a)).toFixed(2)),
-      parseFloat(((-b - sqrtDiscriminant) / (2 * a)).toFixed(2)),
-    ];
-  } else if (discriminant === 0) {
-    return [parseFloat((-b / (2 * a)).toFixed(2))];
-  } else {
-    return [];
+  let a = BigInt(0),
+    b = BigInt(1),
+    fib;
+
+  const absN = Math.abs(n);
+  for (let i = 2; i <= absN; i++) {
+    fib = a + b;
+    a = b;
+    b = fib;
+  }
+
+  return n < 0 && n % 2 === 0 ? -b : b;
+}
+
+function getFibonacciNumber(input) {
+  const ordinal = Number(input);
+
+  if (isNaN(ordinal)) {
+    return "Please enter a valid number.";
+  }
+
+  try {
+    return `Fibonacci number at position ${ordinal} is: ${findFibonacci(
+      ordinal
+    )}`;
+  } catch (error) {
+    return error.message;
   }
 }
 
-const a = parseFloat(prompt("Enter coefficient a: "));
-const b = parseFloat(prompt("Enter coefficient b: "));
-const c = parseFloat(prompt("Enter coefficient c: "));
-
-try {
-  const result = quadraticSolver(a, b, c);
-  if (result.length === 0) {
-    console.log("No real roots");
-  } else {
-    console.log("Roots:", result);
-  }
-} catch (error) {
-  console.log(error.message);
+function displayResult() {
+  const input = prompt("Enter a sequence number for the Fibonacci number: ");
+  const result = getFibonacciNumber(input);
+  console.log(result);
 }
+
+displayResult();
+
+module.exports = { findFibonacci, getFibonacciNumber };

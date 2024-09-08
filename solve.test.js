@@ -1,43 +1,31 @@
-const quadraticSolver = require("./index.js");
+const { findFibonacci } = require("./index");
 
-test("Два вещественных корня -> Случай вещественных корней", () => {
-  const solutions = quadraticSolver(5, 9, 2);
-  console.log(solutions);
-  expect(solutions).toEqual([-0.26, -1.54]);
-});
+describe("Fibonacci Test Cases Based on Provided Table", () => {
+  test("Test Case 1: Input 0", () => {
+    expect(findFibonacci(0)).toBe(BigInt(0));
+  });
 
-test("Один вещественный корень -> Случай единственного корня", () => {
-  const solutions = quadraticSolver(1, -2, 1);
-  console.log(solutions);
-  expect(solutions).toEqual([1]);
-});
+  test("Test Case 2: Input -20 (Negative Input)", () => {
+    expect(findFibonacci(-20)).toBe(BigInt(-6765));
+  });
 
-test("Сообщение об отсутствии корней -> Случай отсутствия корня", () => {
-  const solutions = quadraticSolver(1, 0, 5);
-  console.log(solutions);
-  expect(solutions).toEqual([]);
-});
+  test("Test Case 3: Input 50", () => {
+    expect(findFibonacci(50)).toBe(BigInt(12586269025));
+  });
 
-test("Два вещественных корня -> Случай ввода больших значений коэффициента", () => {
-  const solutions = quadraticSolver(10000000, -5111111, 0);
-  console.log(solutions);
-  expect(solutions).toEqual([0.51, 0]);
-});
+  test("Test Case 4: Input 95 (Number too large)", () => {
+    expect(() => findFibonacci(95)).toThrow("Номер не может быть больше 92");
+  });
 
-test("Два вещественных корня -> Случай ввода коэффициентов с плавающей запятой", () => {
-  const solutions = quadraticSolver(5.5, 8.6, 2.6);
-  console.log(solutions);
-  expect(solutions).toEqual([-0.41, -1.15]);
-});
+  test("Test Case 5: Input 15.2 (Non-integer)", () => {
+    expect(() => findFibonacci(15.2)).toThrow("Номер должен быть целым числом");
+  });
 
-test("Ошибка при выходе за границы -> Случай коэффициента за пределами", () => {
-  expect(() => quadraticSolver(1000000000001, 1000000000, 1000000000)).toThrow(
-    "Coefficients must be between -100000000000 and 100000000000"
-  );
-});
+  test("Test Case 6: Input 1", () => {
+    expect(findFibonacci(1)).toBe(BigInt(1));
+  });
 
-test("Два вещественных корня -> Случай коэффициента в пределах", () => {
-  const solutions = quadraticSolver(10000000, 1000000000, 1000000000);
-  console.log(solutions);
-  expect(solutions).toEqual([-1.01, -98.99]);
+  test("Test Case 7: Input 92", () => {
+    expect(findFibonacci(92)).toBe(BigInt("7540113804746346429"));
+  });
 });
