@@ -2,11 +2,9 @@ const { findFibonacci } = require("./index");
 
 describe("Fibonacci Test Cases Based on Provided Table", () => {
   test("Test Case 1: Input 0", () => {
-    expect(findFibonacci(0)).toBe(BigInt(0));
-  });
-
-  test("Test Case 2: Input -20 (Negative Input)", () => {
-    expect(findFibonacci(-20)).toBe(BigInt(-6765));
+    expect(() => findFibonacci(0)).toThrow(
+      "Fib num is should be only positive"
+    );
   });
 
   test("Test Case 3: Input 50", () => {

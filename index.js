@@ -1,6 +1,9 @@
 const prompt = require("prompt-sync")();
 
 function findFibonacci(n) {
+  if (n == 0) {
+    throw new Error("Fib num is should be only positive");
+  }
   if (n > 92) {
     throw new Error("Номер не может быть больше 92");
   }
@@ -42,12 +45,12 @@ function getFibonacciNumber(input) {
   }
 }
 
-function displayResult() {
-  const input = prompt("Enter a sequence number for the Fibonacci number: ");
-  const result = getFibonacciNumber(input);
-  console.log(result);
-}
+// function displayResult() {
+//   const input = prompt("Enter a sequence number for the Fibonacci number: ");
+//   const result = getFibonacciNumber(input);
+//   console.log(result);
+// }
 
-displayResult();
+// displayResult();
 
 module.exports = { findFibonacci, getFibonacciNumber };
