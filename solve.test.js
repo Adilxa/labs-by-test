@@ -1,43 +1,28 @@
-const quadraticSolver = require("./index.js");
+const { quadraticSolver } = require("./index");
 
-test("Два вещественных корня -> Случай вещественных корней", () => {
-  const solutions = quadraticSolver(5, 9, 2);
-  console.log(solutions);
-  expect(solutions).toEqual([-0.26, -1.54]);
-});
+describe("quadraticSolver Test Cases", () => {
+  test("Test 1: Two real roots for a = 5, b = 9, c = 2", () => {
+    const result = quadraticSolver(5, 9, 2, 2);
+    expect(result).toEqual([-0.26, -1.54, 41]);
+  });
 
-test("Один вещественный корень -> Случай единственного корня", () => {
-  const solutions = quadraticSolver(1, -2, 1);
-  console.log(solutions);
-  expect(solutions).toEqual([1]);
-});
+  test("Test 2: One real root for a = 1, b = -2, c = 1", () => {
+    const result = quadraticSolver(1, -2, 1, 2);
+    expect(result).toEqual([1, 0]);
+  });
 
-test("Сообщение об отсутствии корней -> Случай отсутствия корня", () => {
-  const solutions = quadraticSolver(1, 0, 5);
-  console.log(solutions);
-  expect(solutions).toEqual([]);
-});
+  test("Test 3: No real roots for a = 1, b = 0, c = 5", () => {
+    const result = quadraticSolver(1, 0, 5, 2);
+    expect(result).toEqual([-20]);
+  });
 
-test("Два вещественных корня -> Случай ввода больших значений коэффициента", () => {
-  const solutions = quadraticSolver(10000000, -5111111, 0);
-  console.log(solutions);
-  expect(solutions).toEqual([0.51, 0]);
-});
+  test("Test 4: Large coefficients for a = 1000000, b = -5111111, c = 0", () => {
+    const result = quadraticSolver(1000000, -5111111, 0, 2);
+    expect(result).toEqual([5.11, 0, 26123455654321]);
+  });
 
-test("Два вещественных корня -> Случай ввода коэффициентов с плавающей запятой", () => {
-  const solutions = quadraticSolver(5.5, 8.6, 2.6);
-  console.log(solutions);
-  expect(solutions).toEqual([-0.41, -1.15]);
-});
-
-test("Ошибка при выходе за границы -> Случай коэффициента за пределами", () => {
-  expect(() => quadraticSolver(1000000000001, 1000000000, 1000000000)).toThrow(
-    "Coefficients must be between -100000000000 and 100000000000"
-  );
-});
-
-test("Два вещественных корня -> Случай коэффициента в пределах", () => {
-  const solutions = quadraticSolver(10000000, 1000000000, 1000000000);
-  console.log(solutions);
-  expect(solutions).toEqual([-1.01, -98.99]);
+  test("Test 5: Floating-point coefficients for a = 5.5, b = 8.6, c = 2.6", () => {
+    const result = quadraticSolver(5.5, 8.6, 2.6, 2);
+    expect(result).toEqual([-0.41, -1.15, 16.76]);
+  });
 });

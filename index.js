@@ -1,6 +1,6 @@
-const prompt = require("prompt-sync")(); // Require prompt-sync for user input
+const prompt = require("prompt-sync")();
 
-function quadraticSolver(a, b, c) {
+function quadraticSolver(a, b, c, accuracy = 2) {
   const lowerBound = -100000000000;
   const upperBound = 100000000000;
 
@@ -24,29 +24,53 @@ function quadraticSolver(a, b, c) {
   const discriminant = b * b - 4 * a * c;
   const sqrtDiscriminant = Math.sqrt(Math.abs(discriminant));
 
+  const roundToAccuracy = num => {
+    const factor = Math.pow(10, accuracy);
+    return Math.round(num * factor) / factor;
+  };
+
   if (discriminant > 0) {
     return [
-      parseFloat(((-b + sqrtDiscriminant) / (2 * a)).toFixed(2)),
-      parseFloat(((-b - sqrtDiscriminant) / (2 * a)).toFixed(2)),
+      roundToAccuracy((-b + sqrtDiscriminant) / (2 * a)),
+      roundToAccuracy((-b - sqrtDiscriminant) / (2 * a)),
+      roundToAccuracy(discriminant),
     ];
   } else if (discriminant === 0) {
-    return [parseFloat((-b / (2 * a)).toFixed(2))];
+    return [roundToAccuracy(-b / (2 * a)), roundToAccuracy(discriminant)];
   } else {
-    return [];
+    return [roundToAccuracy(discriminant)];
   }
 }
 
-const a = parseFloat(prompt("Enter coefficient a: "));
-const b = parseFloat(prompt("Enter coefficient b: "));
-const c = parseFloat(prompt("Enter coefficient c: "));
+// try {
+//   const a = parseFloat(prompt("Enter coefficient a: "));
+//   const b = parseFloat(prompt("Enter coefficient b: "));
+//   const c = parseFloat(prompt("Enter coefficient c: "));
+//   const accuracy = parseInt(
+//     prompt("Enter accuracy (number of decimal places): "),
+//     10
+//   );
 
-try {
-  const result = quadraticSolver(a, b, c);
-  if (result.length === 0) {
-    console.log("No real roots");
-  } else {
-    console.log("Roots:", result);
-  }
-} catch (error) {
-  console.log(error.message);
-}
+//   const result = quadraticSolver(a, b, c, accuracy);
+
+//   if (result.length === 1 && result[0] < 0) {
+//     console.log(`Discriminant: [${result[0].toFixed(accuracy)}]`);
+//     console.log("No real roots (complex roots).");
+//   } else if (result.length === 2) {
+//     console.log(
+//       `The equation has one real root and discriminant: [${result[0].toFixed(
+//         accuracy
+//       )}, ${result[1].toFixed(accuracy)}]`
+//     );
+//   } else {
+//     console.log(
+//       `The equation has two real roots and discriminant: [${result[0].toFixed(
+//         accuracy
+//       )}, ${result[1].toFixed(accuracy)}, ${result[2].toFixed(accuracy)}]`
+//     );
+//   }
+// } catch (error) {
+//   console.log("Error:", error.message);
+// }
+
+module.exports = { quadraticSolver };

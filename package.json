@@ -196,7 +196,8 @@
     "yocto-queue": "^0.1.0"
   },
   "scripts": {
-    "test": "jest"
+    "test": "jest",
+    "dev": "node index.js"
   },
   "author": "",
   "license": "ISC",
