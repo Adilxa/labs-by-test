@@ -1,3 +1,8 @@
+const prompt = require("prompt-sync")({ sigint: true });
+
+const lowerBound = 1;
+const upperBound = 10;
+
 function isSorted(arr) {
   for (let i = 1; i < arr.length; i++) {
     if (arr[i] < arr[i - 1]) {
@@ -11,6 +16,9 @@ function binarySearch(arr, key) {
   if (!Array.isArray(arr) || !arr.length) {
     return "Array not provided";
   }
+  if (arr.length < lowerBound || arr.length > upperBound) {
+    return `Array length must be between ${lowerBound} and ${upperBound}`;
+  }
   if (!isSorted(arr)) {
     return "Array not sorted";
   }
@@ -22,14 +30,26 @@ function binarySearch(arr, key) {
     const mid = Math.floor((left + right) / 2);
 
     if (arr[mid] === key) {
-      return mid; // Return index of found element
+      return mid;
     } else if (arr[mid] < key) {
       left = mid + 1;
     } else {
       right = mid - 1;
     }
   }
-  return "Element not found"; // Element not found
+  return "Element not found";
 }
 
-module.exports = { binarySearch, isSorted };
+function startBinarySearch() {
+  const inputArray = prompt("Enter sorted array elements separated by commas: ")
+    .split(",")
+    .map(Number);
+  const key = Number(prompt("Enter the key to search for: "));
+
+  const result = binarySearch(inputArray, key);
+  console.log(result);
+}
+
+// startBinarySearch();
+
+module.exports = { binarySearch, isSorted, startBinarySearch };
