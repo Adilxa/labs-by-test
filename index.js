@@ -1,55 +1,45 @@
 const prompt = require("prompt-sync")({ sigint: true });
 
-const lowerBound = 1;
-const upperBound = 10;
+const sumPositiveElements = arr => {
+  let acc = 0;
 
-function isSorted(arr) {
-  for (let i = 1; i < arr.length; i++) {
-    if (arr[i] < arr[i - 1]) {
-      return false;
+  for (let i = 0; i < arr.length; i++) {
+    if (arr[i] > 0) {
+      acc += arr[i];
     }
   }
-  return true;
-}
+  return acc;
+};
 
-function binarySearch(arr, key) {
-  if (!Array.isArray(arr) || !arr.length) {
-    return "Array not provided";
-  }
-  if (arr.length < lowerBound || arr.length > upperBound) {
-    return `Array length must be between ${lowerBound} and ${upperBound}`;
-  }
-  if (!isSorted(arr)) {
-    return "Array not sorted";
+const sumMatrixColumns = matrix => {
+  if (matrix.length === 0 || matrix[0].length === 0) {
+    throw new Error(
+      "Количество строк или столбцов в матрице не может быть нулевым, отрицательным или пустым!"
+    );
   }
 
-  let left = 0;
-  let right = arr.length - 1;
+  let colSums = Array(matrix[0].length).fill(0);
 
-  while (left <= right) {
-    const mid = Math.floor((left + right) / 2);
-
-    if (arr[mid] === key) {
-      return mid;
-    } else if (arr[mid] < key) {
-      left = mid + 1;
-    } else {
-      right = mid - 1;
+  for (let i = 0; i < matrix.length; i++) {
+    for (let j = 0; j < matrix[i].length; j++) {
+      colSums[j] += matrix[i][j];
     }
   }
-  return "Element not found";
+
+  return colSums;
+};
+
+const arrayInput = prompt("Введите элементы массива через запятую: ");
+const array = arrayInput.split(",").map(Number);
+console.log(`Сумма положительных элементов: ${sumPositiveElements(array)}`);
+
+const matrixInput = prompt(
+  'Введите матрицу в формате строк через пробел (например, "1,2,3 1,2,3"): '
+);
+const matrix = matrixInput.split(" ").map(row => row.split(",").map(Number));
+
+try {
+  console.log(`Сумма элементов по столбцам: ${sumMatrixColumns(matrix)}`);
+} catch (error) {
+  console.error(error.message);
 }
-
-function startBinarySearch() {
-  const inputArray = prompt("Enter sorted array elements separated by commas: ")
-    .split(",")
-    .map(Number);
-  const key = Number(prompt("Enter the key to search for: "));
-
-  const result = binarySearch(inputArray, key);
-  console.log(result);
-}
-
-// startBinarySearch();
-
-module.exports = { binarySearch, isSorted, startBinarySearch };
