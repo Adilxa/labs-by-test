@@ -46,6 +46,13 @@ function startBinarySearch() {
     .map(Number);
   const key = Number(prompt("Enter the key to search for: "));
 
+  if (inputArray.some(isNaN)) {
+    console.log(
+      "Error: Input array contains symbols. Please enter only numbers."
+    );
+    return;
+  }
+
   const result = binarySearch(inputArray, key);
   console.log(result);
 }
