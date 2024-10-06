@@ -1,3 +1,5 @@
-const sumColumns = require("./sumColumns");
+// const sumColumns = require("./sumColumns");
+const binarySearch = require("./binarySearch");
 
-sumColumns();
+// sumColumns();
+binarySearch();

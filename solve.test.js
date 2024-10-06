@@ -40,16 +40,6 @@
 
 //2
 
-// const bubbleSort = require("./bubbleSort");
-
-// test("Bubble sort correctly sorts the array", () => {
-//   expect(bubbleSort([5, 10, 12, 37])).toEqual([5, 10, 12, 37]);
-//   expect(bubbleSort([5, 12, 10, 37])).toEqual([5, 10, 12, 37]);
-//   expect(bubbleSort([3, 2, 1])).toEqual([1, 2, 3]);
-// });
-
-//3
-
 // sumColumns.test.js
 const sumColumns = require("./sumColumns");
 
