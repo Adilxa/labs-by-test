@@ -1,5 +1,6 @@
 {
   "devDependencies": {
+    "complexity-report": "^2.0.0-alpha",
     "jest": "^29.7.0"
   },
   "name": "4course",
@@ -197,7 +198,9 @@
   },
   "scripts": {
     "test": "jest",
-    "dev": "node index.js"
+    "dev": "node index.js",
+    "coverage": "jest --coverage",
+    "metrics": "cr index.js solve.test.js -f markdown"
   },
   "author": "",
   "license": "ISC",
