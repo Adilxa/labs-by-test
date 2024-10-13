@@ -57,6 +57,11 @@ function startBinarySearch() {
   console.log(result);
 }
 
+function test() {
+  return;
+  console.log("This will never run"); // This will trigger an error for unreachable code.
+}
+
 // startBinarySearch();
 
 module.exports = { binarySearch, isSorted, startBinarySearch };

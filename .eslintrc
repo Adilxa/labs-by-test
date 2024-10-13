@@ -1,0 +1,23 @@
+{
+  "env": {
+    "browser": true,
+    "node": true,
+    "es2021": true
+  },
+  "extends": "eslint:recommended",
+  "rules": {
+    "no-unused-vars": "warn",
+    "no-console": "warn",
+    "no-undef": "error",
+    "prefer-const": "error",
+    "semi": ["error", "always"],
+    "no-var": "error",
+    "no-unreachable": "error",
+    "space-infix-ops": "error",
+    "complexity": ["warn", { "max": 3 }],
+    "eqeqeq": "error", // Enforce strict equality
+    "indent": ["error", 2], // Enforce 2-space indentation
+    "quotes": ["error", "single"], // Enforce single quotes
+    "arrow-body-style": ["error", "as-needed"] // Use braces for arrow function bodies as needed
+  }
+}
