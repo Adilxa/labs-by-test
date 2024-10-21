@@ -1,5 +1,4 @@
 const prompt = require("prompt-sync")({ sigint: true });
-
 const lowerBound = 1;
 const upperBound = 10;
 
@@ -10,10 +9,11 @@ function isSorted(arr) {
     }
   }
   return true;
-}
 
+}
 function binarySearch(arr, key) {
   if (!Array.isArray(arr) || !arr.length) {
+
     return "Array not provided";
   }
   if (arr.length < lowerBound || arr.length > upperBound) {
@@ -22,13 +22,10 @@ function binarySearch(arr, key) {
   if (!isSorted(arr)) {
     return "Array not sorted";
   }
-
   let left = 0;
   let right = arr.length - 1;
-
   while (left <= right) {
     const mid = Math.floor((left + right) / 2);
-
     if (arr[mid] === key) {
       return mid;
     } else if (arr[mid] < key) {
@@ -39,24 +36,19 @@ function binarySearch(arr, key) {
   }
   return "Element not found";
 }
-
 function startBinarySearch() {
   const inputArray = prompt("Enter sorted array elements separated by commas: ")
     .split(",")
     .map(Number);
   const key = Number(prompt("Enter the key to search for: "));
-
   if (inputArray.some(isNaN)) {
     console.log(
       "Error: Input array contains symbols. Please enter only numbers."
     );
     return;
   }
-
   const result = binarySearch(inputArray, key);
   console.log(result);
 }
-
 // startBinarySearch();
-
 module.exports = { binarySearch, isSorted, startBinarySearch };

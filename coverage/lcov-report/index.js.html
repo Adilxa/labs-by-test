@@ -125,10 +125,17 @@
 <a name='L60'></a><a href='#L60'>60</a>
 <a name='L61'></a><a href='#L61'>61</a>
 <a name='L62'></a><a href='#L62'>62</a>
-<a name='L63'></a><a href='#L63'>63</a></td><td class="line-coverage quiet"><span class="cline-any cline-yes">1x</span>
+<a name='L63'></a><a href='#L63'>63</a>
+<a name='L64'></a><a href='#L64'>64</a>
+<a name='L65'></a><a href='#L65'>65</a></td><td class="line-coverage quiet"><span class="cline-any cline-yes">1x</span>
+<span class="cline-any cline-yes">1x</span>
+<span class="cline-any cline-yes">1x</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-yes">1x</span>
-<span class="cline-any cline-yes">1x</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-yes">7x</span>
@@ -140,7 +147,12 @@
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-yes">9x</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-yes">1x</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-yes">8x</span>
@@ -149,13 +161,10 @@
 <span class="cline-any cline-yes">7x</span>
 <span class="cline-any cline-yes">1x</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-yes">6x</span>
 <span class="cline-any cline-yes">6x</span>
-<span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-yes">6x</span>
 <span class="cline-any cline-yes">10x</span>
-<span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-yes">10x</span>
 <span class="cline-any cline-yes">5x</span>
 <span class="cline-any cline-yes">5x</span>
@@ -167,7 +176,11 @@
 <span class="cline-any cline-yes">1x</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
 <span class="cline-any cline-no">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
@@ -175,22 +188,18 @@
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-no">&nbsp;</span>
 <span class="cline-any cline-no">&nbsp;</span>
-<span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-no">&nbsp;</span>
-<span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-no">&nbsp;</span>
-<span class="cline-any cline-no">&nbsp;</span>
-<span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-yes">1x</span>
 <span class="cline-any cline-neutral">&nbsp;</span></td><td class="text"><pre class="prettyprint lang-js">const prompt = require("prompt-sync")({ sigint: true });
-&nbsp;
 const lowerBound = 1;
 const upperBound = 10;
+&nbsp;
+let a;
+&nbsp;
+let b;
+&nbsp;
+&nbsp;
 &nbsp;
 function isSorted(arr) {
   for (let i = 1; i &lt; arr.length; i++) {
@@ -199,10 +208,15 @@ function isSorted(arr) {
     }
   }
   return true;
-}
 &nbsp;
+&nbsp;
+&nbsp;
+}
 function binarySearch(arr, key) {
   if (!Array.isArray(arr) || !arr.length) {
+&nbsp;
+&nbsp;
+&nbsp;
     return "Array not provided";
   }
   if (arr.length &lt; lowerBound || arr.length &gt; upperBound) {
@@ -211,13 +225,10 @@ function binarySearch(arr, key) {
   if (!isSorted(arr)) {
     return "Array not sorted";
   }
-&nbsp;
   let left = 0;
   let right = arr.length - 1;
-&nbsp;
   while (left &lt;= right) {
     const mid = Math.floor((left + right) / 2);
-&nbsp;
     if (arr[mid] === key) {
       return mid;
     } else if (arr[mid] &lt; key) {
@@ -228,26 +239,21 @@ function binarySearch(arr, key) {
   }
   return "Element not found";
 }
-&nbsp;
 function <span class="fstat-no" title="function not covered" >startBinarySearch(</span>) {
   const inputArray = <span class="cstat-no" title="statement not covered" >prompt("Enter sorted array elements separated by commas: ")</span>
     .split(",")
     .map(Number);
   const key = <span class="cstat-no" title="statement not covered" >Number(prompt("Enter the key to search for: "));</span>
-&nbsp;
 <span class="cstat-no" title="statement not covered" >  if (inputArray.some(isNaN)) {</span>
 <span class="cstat-no" title="statement not covered" >    console.log(</span>
-      "Error: Input array contains symbols. Please enter only numbers."
+      'Error: Input array contains symbols. Please enter only numbers.'
     );
 <span class="cstat-no" title="statement not covered" >    return;</span>
   }
-&nbsp;
   const result = <span class="cstat-no" title="statement not covered" >binarySearch(inputArray, key);</span>
 <span class="cstat-no" title="statement not covered" >  console.log(result);</span>
 }
-&nbsp;
 // startBinarySearch();
-&nbsp;
 module.exports = { binarySearch, isSorted, startBinarySearch };
 &nbsp;</pre></td></tr></table></pre>
 
@@ -256,7 +262,7 @@ module.exports = { binarySearch, isSorted, startBinarySearch };
             <div class='footer quiet pad2 space-top1 center small'>
                 Code coverage generated by
                 <a href="https://istanbul.js.org/" target="_blank" rel="noopener noreferrer">istanbul</a>
-                at 2024-10-19T17:31:34.735Z
+                at 2024-10-21T05:00:44.882Z
             </div>
         <script src="prettify.js"></script>
         <script>

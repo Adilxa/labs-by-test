@@ -1,6 +1,7 @@
 {
   "devDependencies": {
     "complexity-report": "^2.0.0-alpha",
+    "eslint": "^8.56.0",
     "jest": "^29.7.0"
   },
   "name": "4course",
@@ -200,7 +201,9 @@
     "test": "jest",
     "dev": "node index.js",
     "coverage": "jest --coverage",
-    "metrics": "cr index.js solve.test.js -f markdown"
+    "metrics": "cr index.js -f markdown",
+    "lint": "eslint index.js",
+    "lint:fix": "eslint index.js --fix"
   },
   "author": "",
   "license": "ISC",
