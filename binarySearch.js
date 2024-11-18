@@ -17,19 +17,19 @@ function binarySearch(arr, target) {
 }
 
 const prompt = require("prompt-sync")();
-let arrayInput;
+// let arrayInput;
 
-try {
-  arrayInput = JSON.parse(prompt("Enter an array: "));
-  if (!Array.isArray(arrayInput)) {
-    throw new Error("Input is not a valid array.");
-  }
-} catch (error) {
-  console.error("Invalid input. Please enter a valid array.");
-  process.exit(1);
-}
+// try {
+//   arrayInput = JSON.parse(prompt("Enter an array: "));
+//   if (!Array.isArray(arrayInput)) {
+//     throw new Error("Input is not a valid array.");
+//   }
+// } catch (error) {
+//   console.error("Invalid input. Please enter a valid array.");
+//   process.exit(1);
+// }
 
-const target = parseInt(prompt("Enter the target element: "), 10);
-console.log("Index of target: ", binarySearch(arrayInput, target));
+// const target = parseInt(prompt("Enter the target element: "), 10);
+// console.log("Index of target: ", binarySearch(arrayInput, target));
 
 module.exports = binarySearch;

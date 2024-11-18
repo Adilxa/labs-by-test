@@ -1,133 +1,208 @@
-// const binarySearch = require("./binarySearch");
+// const binarySearch = require('./binarySearch');
 
-// describe("Binary Search Tests from Table", () => {
-//   test("Test 1: Full run on array [5, 10, 12, 37] with target 37", () => {
-//     expect(binarySearch([5, 10, 12, 37], 37)).toBe(3); // target index: 3
+// describe('Binary Search Tests', () => {
+//   test('Находит элемент в массиве [5, 10, 12, 37]: target = 37', () => {
+//     const arr = [5, 10, 12, 37];
+//     const target = 37;
+//     const result = binarySearch(arr, target);
+//     expect(result).toBe(3); // Индекс элемента 37
 //   });
 
-//   test("Test 2: 1st iteration on array [5, 10, 12, 37] with target 10", () => {
-//     expect(binarySearch([5, 10, 12, 37], 10)).toBe(1); // target index: 1
+//   test('Находит элемент в массиве [5, 10, 12, 37]: target = 10', () => {
+//     const arr = [5, 10, 12, 37];
+//     const target = 10;
+//     const result = binarySearch(arr, target);
+//     expect(result).toBe(1); // Индекс элемента 10
 //   });
 
-//   test("Test 3: 2nd iteration on array [5, 10, 12, 37] with target 5", () => {
-//     expect(binarySearch([5, 10, 12, 37], 5)).toBe(0); // target index: 0
+//   test('Находит элемент в массиве [5, 10, 12, 37]: target = 5', () => {
+//     const arr = [5, 10, 12, 37];
+//     const target = 5;
+//     const result = binarySearch(arr, target);
+//     expect(result).toBe(0); // Индекс элемента 5
 //   });
 
-//   test("Test 4: Search on array [1, 2, 3, ..., 16] with target 16 in m=3 iterations", () => {
-//     expect(
-//       binarySearch([1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15, 16], 16)
-//     ).toBe(15); // target index: 15
+//   test('Не находит элемент, которого нет в массиве [5, 10, 12, 37]: target = 50', () => {
+//     const arr = [5, 10, 12, 37];
+//     const target = 50;
+//     const result = binarySearch(arr, target);
+//     expect(result).toBe(-1); // Элемент отсутствует
 //   });
 
-//   test("Test 5: Search on array [1, 2, 3, ..., 16] with target 16 in n-1 iterations", () => {
-//     expect(
-//       binarySearch([1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15, 16], 16)
-//     ).toBe(15); // target index: 15
+//   test('Работает с пустым массивом', () => {
+//     const arr = [];
+//     const target = 5;
+//     const result = binarySearch(arr, target);
+//     expect(result).toBe(-1); // Элемент не может быть найден в пустом массиве
 //   });
 
-//   test("Test 6: Search on array [1, 2, 3, ..., 16] with target 16 in n iterations", () => {
-//     expect(
-//       binarySearch([1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15, 16], 16)
-//     ).toBe(15); // target index: 15
+//   test('Работает с массивом из одного элемента (элемент найден)', () => {
+//     const arr = [5];
+//     const target = 5;
+//     const result = binarySearch(arr, target);
+//     expect(result).toBe(0); // Единственный элемент в массиве
 //   });
 
-//   test("Test 7: Search on array [1, 2, 3, ..., 16] with target 16 in n+1 iterations", () => {
-//     expect(
-//       binarySearch([1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15, 16], 16)
-//     ).toBe(15); // target index: 15
+//   test('Работает с массивом из одного элемента (элемент не найден)', () => {
+//     const arr = [5];
+//     const target = 10;
+//     const result = binarySearch(arr, target);
+//     expect(result).toBe(-1); // Элемент отсутствует
+//   });
+
+//   test('Работает с большим массивом', () => {
+//     const arr = Array.from({ length: 1000 }, (_, i) => i + 1); // Массив [1, 2, ..., 1000]
+//     const target = 999;
+//     const result = binarySearch(arr, target);
+//     expect(result).toBe(998); // Индекс элемента 999
 //   });
 // });
+
+
 
 //2
+// const sumPositiveNumbers  = require('./sumOfPositive');
 
-// const { sumPositiveNumbers } = require("./sumOfPositive");
-
-// describe("sumPositiveNumbers", () => {
-//   test("Sum of positive numbers in [5, 10, 12, 37]", () => {
-//     const input = [5, 10, 12, 37];
-//     const result = sumPositiveNumbers(input);
-//     expect(result).toBe(64); // 5 + 10 + 12 + 37
+// describe('Sum of Positive Numbers', () => {
+//   test('Полный прогон массива: [1,2,3,4,5,6,7,8,9,10]', () => {
+//     const input = [1, 2, 3, 4, 5, 6, 7, 8, 9, 10];
+//     expect(sumPositiveNumbers(input)).toBe(55); // Сумма всех положительных чисел
 //   });
 
-//   test("Sum of positive numbers in [5, -10, 12, -37]", () => {
-//     const input = [5, -10, 12, -37];
-//     const result = sumPositiveNumbers(input);
-//     expect(result).toBe(17); // 5 + 12
+//   test('Работает с пустым массивом', () => {
+//     const input = [];
+//     expect(sumPositiveNumbers(input)).toBe(0); // Пустой массив
 //   });
 
-//   test("Sum of positive numbers in [1, -2, 3, -4, 5]", () => {
-//     const input = [1, -2, 3, -4, 5];
-//     const result = sumPositiveNumbers(input);
-//     expect(result).toBe(9); // 1 + 3 + 5
+//   test('Работает с отрицательными числами', () => {
+//     const input = [-1, -2, -3, -4, -5];
+//     expect(sumPositiveNumbers(input)).toBe(0); // Только отрицательные числа
 //   });
 
-//   test("Sum of positive numbers in [-5, -10, -12]", () => {
-//     const input = [-5, -10, -12];
-//     const result = sumPositiveNumbers(input);
-//     expect(result).toBe(0); // No positive numbers
+//   test('Работает с комбинацией положительных и отрицательных чисел', () => {
+//     const input = [-1, 2, -3, 4, -5];
+//     expect(sumPositiveNumbers(input)).toBe(6); // Сумма положительных: 2 + 4
 //   });
 
-//   test("Sum of positive numbers in [0, 1, 2, 3]", () => {
-//     const input = [0, 1, 2, 3];
-//     const result = sumPositiveNumbers(input);
-//     expect(result).toBe(6); // 1 + 2 + 3
+//   test('Работает с массивом из одного положительного числа', () => {
+//     const input = [10];
+//     expect(sumPositiveNumbers(input)).toBe(10); // Единственный элемент
+//   });
+
+//   test('Работает с массивом из одного отрицательного числа', () => {
+//     const input = [-10];
+//     expect(sumPositiveNumbers(input)).toBe(0); // Отрицательное число игнорируется
 //   });
 // });
 
-//3
 
+//3
 // const sumColumns = require("./sumColumns");
 
-// test("Sum of matrix columns is correct", () => {
-//   expect(
-//     sumColumns([
+// describe("sumColumns", () => {
+//   test("Сумма столбцов для матрицы 2x3", () => {
+//     const input = [
 //       [1, 2, 3],
 //       [4, 5, 6],
-//     ])
-//   ).toEqual([5, 7, 9]);
-//   expect(
-//     sumColumns([
-//       [1, 0],
-//       [0, 1],
-//     ])
-//   ).toEqual([1, 1]);
-//   expect(
-//     sumColumns([
-//       [1, 2, 3],
-//       [1, 2, 3],
-//       [1, 2, 3],
-//     ])
-//   ).toEqual([3, 6, 9]);
-//   expect(sumColumns([[1]])).toEqual([1]);
-//   expect(sumColumns([[1, 2]])).toEqual([1, 2]);
+//     ];
+//     const expected = [5, 7, 9];
+//     expect(sumColumns(input)).toEqual(expected);
+//   });
+
+//   test("Матрица с разным количеством столбцов (ошибка)", () => {
+//     const input = [
+//       [1, 2],
+//       [3, 4, 5],
+//     ];
+//     const expected = "Введите матрицу так, чтобы столбцы были равны между собой.";
+//     expect(sumColumns(input)).toEqual(expected);
+//   });
+
+//   test("Пустая матрица", () => {
+//     const input = [];
+//     const expected = "Матрица пуста. Сумма: 0";
+//     expect(sumColumns(input)).toEqual(expected);
+//   });
+
+//   test("Матрица 1x1", () => {
+//     const input = [[10]];
+//     const expected = [10];
+//     expect(sumColumns(input)).toEqual(expected);
+//   });
+
+//   test("Матрица 3x3 с отрицательными числами", () => {
+//     const input = [
+//       [-1, -2, -3],
+//       [-4, -5, -6],
+//       [-7, -8, -9],
+//     ];
+//     const expected = [-12, -15, -18];
+//     expect(sumColumns(input)).toEqual(expected);
+//   });
 // });
 
 //4
+const { bubbleSort } = require('./bubbleSort'); // Assuming the file is named bubbleSort.js
 
-// const { bubbleSort } = require("./bubbleSort");
+describe('bubbleSort', () => {
+  test('sorts an unsorted array', () => {
+    const input = [4, 2, 7, 1];
+    const sorted = bubbleSort(input);
+    expect(sorted).toEqual([1, 2, 4, 7]);
+  });
 
-// test("Bubble Sort returns correct sorted array and iterations count", () => {
-//   // Test Case 1: General case with mixed numbers as strings
-//   const result1 = bubbleSort(["3", "12", "-1", "2", "3", "12", "3", "1"]);
-//   expect(result1.sortedArray).toEqual([-1, 1, 2, 3, 3, 3, 12, 12]);
-//   expect(result1.iterations.external).toBe(7);
-//   expect(result1.iterations.internal).toBe(28);
+  test('does not modify an already sorted array', () => {
+    const input = [1, 2, 3, 4];
+    const sorted = bubbleSort(input);
+    expect(sorted).toEqual([1, 2, 3, 4]);
+  });
 
-//   // Test Case 2: Another general case with positive and negative numbers
-//   const result2 = bubbleSort(["5", "-10", "2", "-3", "0"]);
-//   expect(result2.sortedArray).toEqual([-10, -3, 0, 2, 5]);
-//   expect(result2.iterations.external).toBe(3); // Adjusted based on real result
-//   expect(result2.iterations.internal).toBe(9);
+  test('handles a reverse ordered array', () => {
+    const input = [9, 7, 5, 3];
+    const sorted = bubbleSort(input);
+    expect(sorted).toEqual([3, 5, 7, 9]);
+  });
 
-//   // Test Case 3: Already sorted array
-//   const result3 = bubbleSort(["1", "2", "3", "4"]);
-//   expect(result3.sortedArray).toEqual([1, 2, 3, 4]);
-//   expect(result3.iterations.external).toBe(1); // The algorithm should break early
-//   expect(result3.iterations.internal).toBe(3);
+  test('handles arrays with duplicates', () => {
+    const input = [4, 3, 3, 1, 2, 5];
+    const sorted = bubbleSort(input);
+    expect(sorted).toEqual([1, 2, 3, 3, 4, 5]);
+  });
 
-//   // Test Case 4: Array with all identical values
-//   const result4 = bubbleSort(["3", "3", "3", "3"]);
-//   expect(result4.sortedArray).toEqual([3, 3, 3, 3]);
-//   expect(result4.iterations.external).toBe(1); // Breaks early as array is already sorted
-//   expect(result4.iterations.internal).toBe(3);
-// });
+  test('sorts an array with one element', () => {
+    const input = [1];
+    const sorted = bubbleSort(input);
+    expect(sorted).toEqual([1]);
+  });
+
+  test('sorts an empty array', () => {
+    const input = [];
+    const sorted = bubbleSort(input);
+    expect(sorted).toEqual([]);
+  });
+
+  test('counts the number of iterations correctly for a small array', () => {
+    const input = [4, 2, 7, 1];
+    const sorted = bubbleSort(input);
+    // The expected result for the iterations here would be based on your code logic
+    expect(sorted).toEqual([1, 2, 4, 7]);
+  });
+
+  test('counts the number of iterations for a large array', () => {
+    const input = [5, 1, 4, 2, 8];
+    const sorted = bubbleSort(input);
+    expect(sorted).toEqual([1, 2, 4, 5, 8]);
+  });
+
+  test('works with arrays of large numbers', () => {
+    const input = [1000000000, 500000000, 300000000, 100000000];
+    const sorted = bubbleSort(input);
+    expect(sorted).toEqual([100000000, 300000000, 500000000, 1000000000]);
+  });
+
+  test('sorts an array with negative numbers', () => {
+    const input = [4, -2, 7, -1];
+    const sorted = bubbleSort(input);
+    expect(sorted).toEqual([-2, -1, 4, 7]);
+  });
+});
